@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="es" data-tema="claro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Consulta enfermedades y los datos publicados sobre su afectación.">
+  <title>Salud Global · Consulta de enfermedades</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <header class="cabecera">
+    <div class="contenido-cabecera">
+      <a href="#inicio">Salud Global</a>
+      <nav class="navegacion-principal" aria-label="Menú principal">
+        <a class="activo" href="#explorar" aria-current="location">Enfermedades</a>
+        <a href="#fuentes">Fuentes</a>
+      </nav>
+      <button id="boton-tema" type="button" aria-pressed="false" aria-label="Cambiar entre modo claro y oscuro">
+        <span aria-hidden="true">◐</span>
+        <span>Modo oscuro</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="contenido-principal">
+    <section id="inicio">
+      <h1>Consulta de enfermedades</h1>
+      <p>Selecciona una enfermedad o consulta las que afectan a más personas.</p>
+    </section>
+
+    <section id="explorar" aria-labelledby="titulo-consulta">
+      <h2 id="titulo-consulta">Enfermedades y personas afectadas</h2>
+      <div class="distribucion-consulta">
+        <form class="panel panel-filtros" id="formulario-filtros">
+          <h3>Filtros</h3>
+          <label for="selector-enfermedad">Enfermedad
+            <select id="selector-enfermedad" name="enfermedad" required>
+              <option value="" selected disabled>Seleccionar enfermedad</option>
+            </select>
+          </label>
+          <label for="selector-pais">País o ámbito
+            <select id="selector-pais" name="pais" required>
+              <option value="" selected disabled>Seleccionar ámbito</option>
+            </select>
+          </label>
+          <label for="selector-anio">Año
+            <select id="selector-anio" name="anio" required>
+              <option value="" selected disabled>Seleccionar año</option>
+            </select>
+          </label>
+          <button id="aplicar-filtros" type="submit">Aplicar filtros</button>
+        </form>
+
+        <div class="panel panel-resultados">
+          <h3>Resultados</h3>
+          <p id="estado-consulta" role="status" aria-live="polite">Conexión de datos pendiente.</p>
+          <noscript><p>Activa JavaScript para consultar los datos.</p></noscript>
+          <div class="contenedor-tabla" role="region" aria-label="Tabla de resultados" tabindex="0">
+            <table>
+              <caption>Personas afectadas, de mayor a menor</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Enfermedad</th>
+                  <th scope="col">Personas afectadas</th>
+                  <th scope="col">Año</th>
+                  <th scope="col">Ámbito</th>
+                </tr>
+              </thead>
+              <tbody id="cuerpo-resultados">
+                <tr><td colspan="4">Aquí aparecerán los datos de la fuente.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" id="ficha-enfermedad" aria-labelledby="titulo-enfermedad" hidden>
+      <h2 id="titulo-enfermedad">Ficha de la enfermedad</h2>
+      <p id="descripcion-enfermedad">Información por verificar.</p>
+      <dl>
+        <dt>Mortalidad</dt><dd id="mortalidad-enfermedad">Información por verificar.</dd>
+        <dt>Diferencias por sexo</dt><dd id="sexo-enfermedad">Información por verificar.</dd>
+        <dt>Edades de afectación</dt><dd id="edades-enfermedad">Información por verificar.</dd>
+        <dt>Distribución por países</dt><dd id="paises-enfermedad">Información por verificar.</dd>
+        <dt>Curación y tratamiento</dt><dd id="tratamiento-enfermedad">Información por verificar.</dd>
+      </dl>
+      <a id="fuente-enfermedad" href="https://www.who.int/health-topics">Consultar la fuente de la OMS</a>
+    </section>
+
+    <details class="panel" id="explicacion-datos">
+      <summary>Cómo interpretar los datos</summary>
+      <p>Cada cifra debe indicar su medida, territorio, año y fuente.</p>
+      <p>Personas afectadas, casos nuevos y fallecimientos son medidas diferentes.</p>
+      <p>«Sin datos» indica que falta información para la selección realizada.</p>
+    </details>
+
+    <section id="fuentes" aria-labelledby="titulo-fuentes">
+      <h2 id="titulo-fuentes">Fuentes de datos</h2>
+      <ul>
+        <li><a href="https://xmart-api-public.who.int/DATA_/">Catálogo de indicadores de la OMS</a></li>
+        <li><a href="https://data.worldbank.org/indicator">Indicadores del Banco Mundial</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="pie-pagina">
+    <p>Salud Global · Proyecto de M04</p>
+    <a href="#inicio">Volver al inicio</a>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,160 @@
+/* Valores compartidos que pide la práctica */
+:root {
+  --color-fondo: #f2f4f2;
+  --color-panel: #ffffff;
+  --color-texto: #26352b;
+  --color-principal: #236342;
+  --fuente-texto: Arial, sans-serif;
+  --espacio: 1rem;
+  --sombra: 0 0.125rem 0.5rem #00000015;
+}
+
+/* Modo oscuro */
+html[data-tema="oscuro"] {
+  color-scheme: dark;
+  --color-fondo: #202520;
+  --color-panel: #303830;
+  --color-texto: #f4f6f4;
+  --color-principal: #a4dbb5;
+}
+
+/* Estilos generales */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  font-family: var(--fuente-texto);
+  line-height: 1.5;
+}
+
+a {
+  display: inline-block;
+  min-width: 3rem;
+  min-height: 3rem;
+  padding: 0.75rem 0.5rem;
+  color: var(--color-principal);
+}
+
+/* Cabecera y menú con Flexbox */
+.cabecera, .pie-pagina {
+  padding: var(--espacio);
+  background-color: var(--color-panel);
+}
+
+.contenido-cabecera, .navegacion-principal {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--espacio);
+}
+
+.activo {
+  font-weight: bold;
+  border-bottom: 2px solid var(--color-principal);
+}
+
+/* Distribución con Grid */
+.contenido-principal {
+  display: grid;
+  gap: 2rem;
+  max-width: 70rem;
+  margin: auto;
+  padding: var(--espacio);
+}
+
+.distribucion-consulta {
+  display: grid;
+  gap: var(--espacio);
+}
+
+.panel {
+  padding: var(--espacio);
+  background-color: var(--color-panel);
+  border: 1px solid #aaaaaa;
+  box-shadow: var(--sombra);
+}
+
+/* Formulario y botones */
+.panel-filtros {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio);
+}
+
+button, select, summary {
+  min-width: 3rem;
+  min-height: 3rem;
+  padding: 0.75rem;
+  font: inherit;
+}
+
+select {
+  display: block;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+button {
+  background-color: var(--color-principal);
+  color: var(--color-panel);
+  border: 1px solid var(--color-principal);
+  cursor: pointer;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+button:hover {
+  text-decoration: underline;
+}
+
+:focus-visible {
+  outline: 0.1875rem solid var(--color-principal);
+  outline-offset: 0.125rem;
+}
+
+select:user-invalid {
+  outline: 2px solid #d32f2f;
+}
+
+/* Resultados */
+.panel-resultados {
+  min-width: 0;
+}
+
+.contenedor-tabla {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  min-width: 30rem;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 0.75rem;
+  border: 1px solid #aaaaaa;
+  text-align: left;
+}
+
+#estado-consulta[data-estado="error"] {
+  border-left: 0.25rem solid #d32f2f;
+  padding-left: var(--espacio);
+}
+
+[hidden] {
+  display: none !important;
+}
+
+/* Filtros y resultados en dos columnas */
+@media (min-width: 50rem) {
+  .distribucion-consulta {
+    grid-template-columns: 16rem minmax(0, 1fr);
+  }
+}
